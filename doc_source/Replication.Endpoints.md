@@ -7,7 +7,6 @@ Redis \(cluster mode disabled\) clusters with replicas have two types of endpoin
 
 For read activity, applications can connect to any node in the cluster\. Unlike the primary endpoint, node endpoints resolve to specific endpoints\. If you make a change in your cluster, such as adding or deleting a replica, you must update the node endpoints in your application\.
 
-For read activity, applications can connect to any node in the cluster\. Unlike the primary endpoint, node endpoints resolve to specific endpoints\. If you make a change in your cluster, such as adding or deleting a replica, you must update the node endpoints in your application\.
 
 **Redis \(cluster mode enabled\)**  
 Redis \(cluster mode enabled\) clusters with replicas, because they have multiple shards \(API/CLI: node groups\), which mean they also have multiple primary nodes, have a different endpoint structure than Redis \(cluster mode disabled\) clusters\. Redis \(cluster mode enabled\) has a *configuration endpoint* which "knows" all the primary and node endpoints in the cluster\. Your application connects to the configuration endpoint\. Whenever your application writes to or reads from the cluster's configuration endpoint, Redis, behind the scenes, determines which shard the key belongs to and which endpoint in that shard to use\. It is all quite transparent to your application\.
